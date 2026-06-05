@@ -604,11 +604,66 @@ img { max-width: 100%; }
 .section-tools .container > * { text-align: center; }
 .section-tools .section-sub { margin: 0 auto 56px; }
 
+/* Filters */
+.tools-filter-wrapper {
+  margin-top: 16px;
+}
+.filter-labels {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.filter-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.filter-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--text-primary);
+}
+
+/* Filter Logic */
+#filter-all:checked ~ .filter-labels [for="filter-all"],
+#filter-chat:checked ~ .filter-labels [for="filter-chat"],
+#filter-visual:checked ~ .filter-labels [for="filter-visual"],
+#filter-dev:checked ~ .filter-labels [for="filter-dev"],
+#filter-audio:checked ~ .filter-labels [for="filter-audio"] {
+  background: var(--accent-cyan);
+  color: #060b18;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+}
+
+[data-theme="light"] #filter-all:checked ~ .filter-labels [for="filter-all"],
+[data-theme="light"] #filter-chat:checked ~ .filter-labels [for="filter-chat"],
+[data-theme="light"] #filter-visual:checked ~ .filter-labels [for="filter-visual"],
+[data-theme="light"] #filter-dev:checked ~ .filter-labels [for="filter-dev"],
+[data-theme="light"] #filter-audio:checked ~ .filter-labels [for="filter-audio"] {
+  color: #fff;
+}
+
+#filter-chat:checked ~ .tools-grid .tool-card:not(.cat-chat),
+#filter-visual:checked ~ .tools-grid .tool-card:not(.cat-visual),
+#filter-dev:checked ~ .tools-grid .tool-card:not(.cat-dev),
+#filter-audio:checked ~ .tools-grid .tool-card:not(.cat-audio) {
+  display: none;
+}
+
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-top: 16px;
 }
 
 .tool-card {
